@@ -11,7 +11,6 @@ import java.util.List;
 public interface TournamentRepository extends JpaRepository<Tournament, Long> {
     List<Tournament> findByStartDate(LocalDate startDate);
     List<Tournament> findByLocation(String location);
-    List<Tournament> searchTournaments(
-            @Param("startDate") LocalDate startDate,
-            @Param("location") String location);
+    List<Tournament> searchTournamentByStartDate(LocalDate startDate);
+    List<Tournament> searchTournamentByLocation(String location);
 }

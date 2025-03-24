@@ -48,18 +48,25 @@ public class TournamentController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Tournament>> searchTournaments(
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-            @RequestParam(required = false) String location) {
+    @GetMapping("/search-date")
+    public ResponseEntity<List<Tournament>> searchTournamentByStartDate(
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate) {
 
-        List<Tournament> tournaments = tournamentService.searchTournaments(startDate, location);
+        List<Tournament> tournaments = tournamentService.searchTournamentByStartDate(startDate);
         return new ResponseEntity<>(tournaments, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}/members")
-    public ResponseEntity<Set<Member>> getTournamentMembers(@PathVariable Long id) {
-        Set<Member> members = tournamentService.getTournamentMembers(id);
-        return new ResponseEntity<>(members, HttpStatus.OK);
+    @GetMapping("/search-location")
+    public ResponseEntity<List<Tournament>> searchTournamentByLocation(
+            @RequestParam(required = false) String location) {
+
+        List<Tournament> tournaments = tournamentService.searchTournamentByLocation(location);
+        return new ResponseEntity<>(tournaments, HttpStatus.OK);
     }
+
+//    @GetMapping("/{id}/members")
+//    public ResponseEntity<Set<Member>> getTournamentMembers(@PathVariable Long id) {
+//        Set<Member> members = tournamentService.getTournamentMembers(id);
+//        return new ResponseEntity<>(members, HttpStatus.OK);
+//    }
 }

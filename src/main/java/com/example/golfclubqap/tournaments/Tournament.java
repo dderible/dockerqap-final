@@ -33,7 +33,6 @@ public class Tournament {
 
     private BigDecimal prize;
 
-    @ManyToMany(mappedBy = "tournaments", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Set<Member> members = new HashSet<>();
+//    @ManyToMany(mappedBy = "tournaments", fetch = FetchType.LAZY)
+//    private Set<Member> members = new HashSet<>();
 }
