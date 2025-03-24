@@ -1,5 +1,6 @@
 package com.example.golfclubqap.tournaments;
 
+import com.example.golfclubqap.members.Member;
 import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/tournaments")
@@ -47,37 +49,18 @@ public class TournamentController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/{tournamentId}/members/{memberId}")
-    public ResponseEntity<Tournament> addToTournament(
-            @PathVariable Long tournamentId, @PathVariable Long memberId) {
-        return ResponseEntity.ok(tournamentService.addToTournament(tournamentId, memberId));
+    @GetMapping("/search")
+    public ResponseEntity<List<Tournament>> searchTournaments(
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam(required = false) String location) {
+
+        List<Tournament> tournaments = tournamentService.searchTournaments(startDate, location);
+        return new ResponseEntity<>(tournaments, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{tournamentId}/members/{memberId}")
-    public ResponseEntity<Tournament> removeFromTournament(
-            @PathVariable Long tournamentId, @PathVariable Long memberId) {
-        return ResponseEntity.ok(tournamentService.removeFromTournament(tournamentId, memberId));
-    }
-
-    @GetMapping("/search/by-memberid")
-    public ResponseEntity<List<Tournament>> findTournamentsByMemberId(@RequestParam Long memberId) {
-        return ResponseEntity.ok(tournamentService.findTournamentsByMemberId(memberId));
-    }
-
-    @GetMapping("/search/by-start-date")
-    public ResponseEntity<List<Tournament>> getTournamentsByStartDate(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate) {
-        return ResponseEntity.ok(tournamentService.getTournamentsByStartDate(startDate));
-    }
-
-    @GetMapping("/search/by-end-date")
-    public ResponseEntity<List<Tournament>> getTournamentsByEndDate(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
-        return ResponseEntity.ok(tournamentService.getTournamentsByEndDate(endDate));
-    }
-
-    @GetMapping("/search/by-location")
-    public ResponseEntity<List<Tournament>> getTournamentsByLocation(@RequestParam String location) {
-        return ResponseEntity.ok(tournamentService.getTournamentsByLocation(location));
+    @GetMapping("/{id}/members")
+    public ResponseEntity<Set<Member>> getTournamentMembers(@PathVariable Long id) {
+        Set<Member> members = tournamentService.getTournamentMembers(id);
+        return new ResponseEntity<>(members, HttpStatus.OK);
     }
 }
