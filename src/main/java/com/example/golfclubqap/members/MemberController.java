@@ -1,6 +1,5 @@
 package com.example.golfclubqap.members;
 
-import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +29,13 @@ public class MemberController {
     }
 
     @PostMapping
-    public ResponseEntity<Member> createMember(@Valid @RequestBody Member member) {
+    public ResponseEntity<Member> createMember(@RequestBody Member member) {
         Member newMember = memberService.createMember(member);
         return new ResponseEntity<>(newMember, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Member> updateMember(@PathVariable Long id, @Valid @RequestBody Member member) {
+    public ResponseEntity<Member> updateMember(@PathVariable Long id, @RequestBody Member member) {
         Member updatedMember = memberService.updateMember(id, member);
         return new ResponseEntity<>(updatedMember, HttpStatus.OK);
     }

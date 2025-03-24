@@ -1,7 +1,6 @@
 package com.example.golfclubqap.tournaments;
 
 import com.example.golfclubqap.members.Member;
-import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,13 +31,13 @@ public class TournamentController {
     }
 
     @PostMapping
-    public ResponseEntity<Tournament> createTournament(@Valid @RequestBody Tournament tournament) {
+    public ResponseEntity<Tournament> createTournament(@RequestBody Tournament tournament) {
         Tournament newTournament = tournamentService.createTournament(tournament);
         return new ResponseEntity<>(newTournament, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Tournament> updateTournament(@PathVariable Long id, @Valid @RequestBody Tournament tournament) {
+    public ResponseEntity<Tournament> updateTournament(@PathVariable Long id, @RequestBody Tournament tournament) {
         Tournament updatedTournament = tournamentService.updateTournament(id, tournament);
         return new ResponseEntity<>(updatedTournament, HttpStatus.OK);
     }
