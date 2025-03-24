@@ -48,12 +48,17 @@ public class TournamentService {
         Tournament tournament = findByTournamentId(id);
         tournamentRepository.delete(tournament);
     }
-    public List<Tournament> searchTournaments(LocalDate startDate, String location) {
-        return tournamentRepository.searchTournaments(startDate, location);
+
+    public List<Tournament> searchTournamentByStartDate(LocalDate startDate) {
+        return tournamentRepository.searchTournamentByStartDate(startDate);
     }
 
-    public Set<Member> getTournamentMembers(Long id) {
-        Tournament tournament = findByTournamentId(id);
-        return tournament.getMembers();
+    public List<Tournament> searchTournamentByLocation(String location) {
+        return tournamentRepository.searchTournamentByLocation(location);
     }
+
+//    public Set<Member> getTournamentMembers(Long id) {
+//        Tournament tournament = findByTournamentId(id);
+//        return tournament.getMembers();
+//    }
 }

@@ -33,21 +33,16 @@ public class Member {
 
     private Integer duration;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "member_tournament",
-            joinColumns = @JoinColumn(name = "member_id"),
-            inverseJoinColumns = @JoinColumn(name = "tournament_id")
-    )
+    @ManyToMany
     private Set<Tournament> tournaments = new HashSet<>();
 
     public void addTournament(Tournament tournament) {
         this.tournaments.add(tournament);
-        tournament.getMembers().add(this);
+//        tournament.getMembers().add(this);
     }
 
     public void removeTournament(Tournament tournament) {
         this.tournaments.remove(tournament);
-        tournament.getMembers().remove(this);
+//        tournament.getMembers().remove(this);
     }
 }

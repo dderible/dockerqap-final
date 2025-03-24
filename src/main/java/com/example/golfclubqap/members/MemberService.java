@@ -72,7 +72,6 @@ public class MemberService {
         return memberRepository.findByDuration(duration);
     }
 
-    @Transactional
     public Member addMemberToTournament(Long memberId, Long tournamentId) {
         Member member = findByID(memberId);
         Tournament tournament = tournamentRepository.findById(tournamentId)
@@ -82,7 +81,6 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    @Transactional
     public Member removeMemberFromTournament(Long memberId, Long tournamentId) {
         Member member = findByID(memberId);
         Tournament tournament = tournamentRepository.findById(tournamentId)
