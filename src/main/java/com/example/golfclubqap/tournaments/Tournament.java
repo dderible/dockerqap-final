@@ -1,5 +1,7 @@
 package com.example.golfclubqap.tournaments;
 
+import com.example.golfclubqap.members.Member;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,7 +12,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-// import java.util.HashSet;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -39,4 +42,8 @@ public class Tournament {
     @NotNull (message = "ERROR: Cash Prize is a required field.")
     @Positive (message = "ERROR: Cash Prize cannot be a negative number.")
     private BigDecimal prize;
+
+    @ManyToMany(mappedBy = "tournaments", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Member> members = new HashSet<>();
 }

@@ -72,4 +72,22 @@ public class MemberController {
     public ResponseEntity<List<Member>> getMembersByDuration(@RequestParam Integer duration) {
         return ResponseEntity.ok(memberService.getMembersByDuration(duration));
     }
+
+    @PostMapping("/{memberId}/tournaments/{tournamentId}")
+    public ResponseEntity<Member> addMemberToTournament(
+            @PathVariable Long memberId,
+            @PathVariable Long tournamentId) {
+
+        Member member = memberService.addMemberToTournament(memberId, tournamentId);
+        return new ResponseEntity<>(member, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{memberId}/tournaments/{tournamentId}")
+    public ResponseEntity<Member> removeMemberFromTournament(
+            @PathVariable Long memberId,
+            @PathVariable Long tournamentId) {
+
+        Member member = memberService.removeMemberFromTournament(memberId, tournamentId);
+        return new ResponseEntity<>(member, HttpStatus.OK);
+    }
 }
