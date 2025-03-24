@@ -1,6 +1,5 @@
 package com.example.golfclubqap.members;
 
-import com.example.golfclubqap.members.MemberRepository;
 import com.example.golfclubqap.tournaments.Tournament;
 import com.example.golfclubqap.tournaments.TournamentRepository;
 import jakarta.persistence.EntityNotFoundException;
