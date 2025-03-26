@@ -34,18 +34,18 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member updateMember(Long id, Member memberDetails) {
-        Member member = findByID(id);
-
-        member.setName(memberDetails.getName());
-        member.setAddress(memberDetails.getAddress());
-        member.setEmail(memberDetails.getEmail());
-        member.setPhoneNumber(memberDetails.getPhoneNumber());
-        member.setStartDate(memberDetails.getStartDate());
-        member.setDuration(memberDetails.getDuration());
-
-        return memberRepository.save(member);
-    }
+//    public Member updateMember(Long id, Member memberDetails) {
+//        Member member = findByID(id);
+//
+//        member.setName(memberDetails.getName());
+//        member.setAddress(memberDetails.getAddress());
+//        member.setEmail(memberDetails.getEmail());
+//        member.setPhoneNumber(memberDetails.getPhoneNumber());
+//        member.setStartDate(memberDetails.getStartDate());
+//        member.setDuration(memberDetails.getDuration());
+//
+//        return memberRepository.save(member);
+//    }
 
     public void deleteMember(Long id) {
         Member member = findByID(id);

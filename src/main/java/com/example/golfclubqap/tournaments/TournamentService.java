@@ -32,17 +32,17 @@ public class TournamentService {
         return tournamentRepository.findAll();
     }
 
-    public Tournament updateTournament(Long id, Tournament tournamentDetails) {
-        Tournament tournament = findByTournamentId(id);
-
-        tournament.setStartDate(tournamentDetails.getStartDate());
-        tournament.setEndDate(tournamentDetails.getEndDate());
-        tournament.setLocation(tournamentDetails.getLocation());
-        tournament.setEntryFee(tournamentDetails.getEntryFee());
-        tournament.setPrize(tournamentDetails.getPrize());
-
-        return tournamentRepository.save(tournament);
-    }
+//    public Tournament updateTournament(Long id, Tournament tournamentDetails) {
+//        Tournament tournament = findByTournamentId(id);
+//
+//        tournament.setStartDate(tournamentDetails.getStartDate());
+//        tournament.setEndDate(tournamentDetails.getEndDate());
+//        tournament.setLocation(tournamentDetails.getLocation());
+//        tournament.setEntryFee(tournamentDetails.getEntryFee());
+//        tournament.setPrize(tournamentDetails.getPrize());
+//
+//        return tournamentRepository.save(tournament);
+//    }
 
     public void deleteTournament(Long id) {
         Tournament tournament = findByTournamentId(id);
