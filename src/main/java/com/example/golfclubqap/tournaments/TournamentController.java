@@ -1,6 +1,5 @@
 package com.example.golfclubqap.tournaments;
 
-import com.example.golfclubqap.members.Member;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/tournaments")
@@ -36,11 +34,11 @@ public class TournamentController {
         return new ResponseEntity<>(newTournament, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Tournament> updateTournament(@PathVariable Long id, @RequestBody Tournament tournament) {
-        Tournament updatedTournament = tournamentService.updateTournament(id, tournament);
-        return new ResponseEntity<>(updatedTournament, HttpStatus.OK);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Tournament> updateTournament(@PathVariable Long id, @RequestBody Tournament tournament) {
+//        Tournament updatedTournament = tournamentService.updateTournament(id, tournament);
+//        return new ResponseEntity<>(updatedTournament, HttpStatus.OK);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTournament(@PathVariable Long id) {

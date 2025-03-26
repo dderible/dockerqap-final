@@ -34,11 +34,11 @@ public class MemberController {
         return new ResponseEntity<>(newMember, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Member> updateMember(@PathVariable Long id, @RequestBody Member member) {
-        Member updatedMember = memberService.updateMember(id, member);
-        return new ResponseEntity<>(updatedMember, HttpStatus.OK);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Member> updateMember(@PathVariable Long id, @RequestBody Member member) {
+//        Member updatedMember = memberService.updateMember(id, member);
+//        return new ResponseEntity<>(updatedMember, HttpStatus.OK);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMember(@PathVariable Long id) {
