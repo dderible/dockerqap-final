@@ -1,13 +1,11 @@
 package com.example.golfclubqap.tournaments;
 
-import com.example.golfclubqap.members.Member;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class TournamentService {
